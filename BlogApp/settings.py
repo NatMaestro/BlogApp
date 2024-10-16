@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-q5i339(-4*e+u-5p&$=#guse-pct^1jle)^^kxq#^0d0g1g4-h
 DEBUG = os.getenv('DEBUG',False)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','https://blogapp-proud-forest-9967.fly.dev/','blogapp-c8h2.onrender.com']
-CSRF_TRUSTED_ORIGINS = ['https://blogapp-proud-forest-9967.fly.dev/','blogapp-c8h2.onrender.com']  # <-- Updated!
+CSRF_TRUSTED_ORIGINS = ['https://blogapp-proud-forest-9967.fly.dev/','https://blogapp-c8h2.onrender.com']  # <-- Updated!
 
 
 # Application definition
@@ -185,7 +185,7 @@ WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,  # Disable cache in development, enable it in production
         'BUNDLE_DIR_NAME': 'bundles/',  # This should match the output directory in your webpack config
-        'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'assets', 'webpack-stats.json'),  # Path to your webpack-stats.json file
+        'STATS_FILE': os.path.join(BASE_DIR, '../frontend/assets/webpack-stats.json'),  # Path to your webpack-stats.json file
         'POLL_INTERVAL': 0.1,  # Poll interval for watching changes during dev
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map']  # Ignore hot update and source map files
     }
