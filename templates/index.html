@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
-{% load render_bundle from webpack_loader %}
+<!-- {% load render_bundle from webpack_loader %} -->
 
 {% block content %}
 
 <!-- <h1 class="text-bold">Welcome to django and vuejs Course</h1> -->
 <div id="app">
-    {% render_bundle 'main' %}
+    <!-- {% render_bundle 'main' %} -->
 </div>
+    <!-- Load Vue.js frontend's JavaScript -->
+    <script src="{{ FRONTEND_URL }}/static/src/main.js"></script>
 
 {% endblock %}
