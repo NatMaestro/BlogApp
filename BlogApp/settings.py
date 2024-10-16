@@ -185,7 +185,7 @@ WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,  # Disable cache in development, enable it in production
         'BUNDLE_DIR_NAME': 'bundles/',  # This should match the output directory in your webpack config
-        'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'assets', 'webpack-stats.json'),  # Path to your webpack-stats.json file
+        'STATS_FILE': os.path.join(BASE_DIR, '../frontend/assets/webpack-stats.json'),  # Path to your webpack-stats.json file
         'POLL_INTERVAL': 0.1,  # Poll interval for watching changes during dev
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map']  # Ignore hot update and source map files
     }
