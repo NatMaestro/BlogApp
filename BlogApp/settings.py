@@ -13,10 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q5i339(-4*e+u-5p&$=#guse-pct^1jle)^^kxq#^0d0g1g4-h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG',False)
+DEBUG = os.getenv('DEBUG',True)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','https://blogapp-proud-forest-9967.fly.dev/','blogapp-c8h2.onrender.com', 'http://localhost:8080/']
-CSRF_TRUSTED_ORIGINS = ['https://blogapp-proud-forest-9967.fly.dev/','https://blogapp-c8h2.onrender.com']  # <-- Updated!
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','https://blogapp-proud-forest-9967.fly.dev/','blogapp-c8h2.onrender.com']
+# CSRF_TRUSTED_ORIGINS = ['https://blogapp-proud-forest-9967.fly.dev/','https://blogapp-c8h2.onrender.com']  # <-- Updated!
 
 
 # Application definition
@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',
 
     'allauth',
     'allauth.account',
@@ -44,7 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
 
-    # 'webpack_loader',
+    'webpack_loader',
 
 
 
@@ -53,7 +52,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,15 +82,13 @@ TEMPLATES = [
     },
 ]
 
-FRONTEND_URL = 'http://localhost:8080/'  # Replace with your actual frontend URL
 
-# Update STATIC_URL to point to the frontend's static assets
-STATIC_URL = f'{FRONTEND_URL}/static/'
-# STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # <-- Updated!
+# STATIC_ROOT = BASE_DIR / 'staticfiles'  # <-- Updated!
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # <-- Updated!
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # <-- Updated!
 
 
 WSGI_APPLICATION = 'BlogApp.wsgi.application'
@@ -152,7 +148,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Or another valid backe
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# STATIC_URL = 'static/'
+STATIC_URL = 'static/'
 
 
 
@@ -186,12 +182,12 @@ REST_FRAMEWORK = {
 }
 
 # Configure the webpack loader
-# WEBPACK_LOADER = {
-#     'DEFAULT': {
-#         'CACHE': not DEBUG,  # Disable cache in development, enable it in production
-#         'BUNDLE_DIR_NAME': 'bundles/',  # This should match the output directory in your webpack config
-#         'STATS_FILE': os.path.join(BASE_DIR, '../frontend/assets/webpack-stats.json'),  # Path to your webpack-stats.json file
-#         'POLL_INTERVAL': 0.1,  # Poll interval for watching changes during dev
-#         'IGNORE': [r'.+\.hot-update.js', r'.+\.map']  # Ignore hot update and source map files
-#     }
-# }
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,  # Disable cache in development, enable it in production
+        'BUNDLE_DIR_NAME': 'bundles/',  # This should match the output directory in your webpack config
+        'STATS_FILE': os.path.join(BASE_DIR, '../frontend/assets/webpack-stats.json'),  # Path to your webpack-stats.json file
+        'POLL_INTERVAL': 0.1,  # Poll interval for watching changes during dev
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']  # Ignore hot update and source map files
+    }
+}
